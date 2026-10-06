@@ -1,1 +1,1 @@
-# NBA_Predictor_Polymarket_Analysis
+# NBA Player Team Investment Analysis
