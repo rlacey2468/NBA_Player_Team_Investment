@@ -646,11 +646,40 @@ export default function App() {
 
                   <div className="lower-grid three">
 
-                    <div className="info-card"><h3>KEY STRENGTHS</h3><p className="check">● High value relative to contract cost</p><p className="check">● Strong production profile</p><p className="check">● Model-supported upside</p><p className="check">● Favorable availability profile</p></div>
+                    <div className="info-card">
+                      <h3>KEY STRENGTHS</h3>
+                      <p className="check">● Value Gap — {Number(selected.value_gap).toFixed(1)}% upside</p>
+                      <p className="check">● Quality Score — {Number(selected.quality_score).toFixed(1)}</p>
+                      <p className="check">● Estimated Value — {money(selected.fair_value)}</p>
+                      <p className="check">● Contract — {money(selected.salary)}</p>
+                    </div>
 
-                    <div className="info-card"><h3>RISK CONSIDERATIONS</h3><p className="warn">▲ {selected.risk > 15 ? "Moderate availability risk" : "Low availability risk"}</p><p>Long-term performance uncertainty</p></div>
+                    <div className="info-card">
+                      <h3>RISK CONSIDERATIONS</h3>
+                      <p className="warn">▲ {Number(selected.risk) >= 30 ? "High risk exposure" : Number(selected.risk) > 15 ? "Moderate risk exposure" : "Low risk exposure"}</p>
+                      <p>Risk Score — {Number(selected.risk).toFixed(0)}</p>
+                      <p>{Number(selected.risk) >= 30 ? "Significant availability, age, or contract risk." : Number(selected.risk) > 15 ? "Some availability or long-term performance uncertainty." : "Limited modeled risk relative to the current contract."}</p>
+                    </div>
 
-                    <div className="info-card model"><h3>MODEL SIGNAL</h3><strong>{selected.rating}</strong><small>Primary driver<br/>High value relative to contract cost<br/><br/><b className="risk-line">Key risk</b><br/>{selected.risk > 15 ? "Availability / long-term performance" : "Long-term performance uncertainty"}</small></div>
+                    <div className="info-card model">
+                      <h3>MODEL SIGNAL</h3>
+                      <strong>{selected.rating}</strong>
+                      <small>
+                        Primary driver<br/>
+                        {Number(selected.value_gap) >= 50
+                          ? `High value relative to contract cost (+${Number(selected.value_gap).toFixed(1)}%)`
+                          : Number(selected.value_gap) >= 0
+                          ? `Positive value gap (+${Number(selected.value_gap).toFixed(1)}%)`
+                          : `Negative value gap (${Number(selected.value_gap).toFixed(1)}%)`}
+                        <br/><br/>
+                        <b className="risk-line">Key risk</b><br/>
+                        {Number(selected.risk) >= 30
+                          ? "High modeled risk exposure"
+                          : Number(selected.risk) > 15
+                          ? "Availability / long-term performance"
+                          : "Limited modeled risk"}
+                      </small>
+                    </div>
 
                   </div>
 
