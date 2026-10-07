@@ -1,10 +1,9 @@
-from nba_api.stats.endpoints import playergamelog
+from src.api import get_player_game_log
+from src.analytics import calculate_season_stats
 
-gamelog = playergamelog.PlayerGameLog(
-    player_id="2544",      # LeBron James
-    season="2024-25"
-)
 
-df = gamelog.get_data_frames()[0]
+df = get_player_game_log("2544", "2024-25")
 
-print(df.head())
+stats = calculate_season_stats(df)
+
+print(stats)
