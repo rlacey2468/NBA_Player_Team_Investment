@@ -65,11 +65,9 @@ Historical NBA Statistics & Salaries
 
 NBA salaries vary significantly across seasons as the league's salary cap changes. To make historical salary data more comparable, the model uses salary-cap share:
 
-\[
-\text{Salary Cap Share}
-=
-\frac{\text{Player Salary}}{\text{League Salary Cap}}
-\]
+**Salary Cap Share = Player Salary / League Salary Cap**
+
+This represents the percentage of the league's salary cap allocated to a player's salary.
 
 The model estimates a player's salary-cap-adjusted value, which is then converted back into a dollar estimate using the applicable historical salary cap.
 
