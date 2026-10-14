@@ -83,12 +83,9 @@ Ridge Regression introduces regularization, helping control model complexity whe
 
 The platform compares estimated fair value with the player's current salary.
 
-\[
-\text{Value Gap (\%)}
-=
-\frac{\text{Fair Value}-\text{Current Salary}}
-{\text{Fair Value}}\times100
-\]
+Value Gap (%) = ((Fair Value - Current Salary) / Fair Value) × 100
+
+A positive value gap indicates that the model's estimated fair value exceeds the player's current salary. A negative value gap indicates that the current salary exceeds the model's estimate.
 
 A positive value gap indicates that the model's estimated fair value exceeds the current salary. A negative value gap indicates that the current salary exceeds the model's estimate.
 
